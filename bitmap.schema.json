@@ -1,0 +1,142 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "FileHeader": {
+      "$id": "#BMP.FileHeader",
+      "type": "object",
+      "properties": {
+        "Signature": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 2
+            },
+            {
+              "type": "integer",
+              "minimum": 19778,
+              "maximum": 19778
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "InfoHeader": {
+      "$id": "#BMP.InfoHeader",
+      "type": "object",
+      "properties": {
+        "Size": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 40,
+              "maximum": 40
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "Width": {
+          "type": "integer"
+        },
+        "Height": {
+          "type": "integer"
+        },
+        "Planes": {
+          "type": "integer"
+        },
+        "BitCount": {
+          "type": "integer",
+          "anyOf": [
+            {
+              "minimum": 1,
+              "maximum": 1
+            },
+            {
+              "minimum": 2,
+              "maximum": 2
+            },
+            {
+              "minimum": 4,
+              "maximum": 4
+            },
+            {
+              "minimum": 8,
+              "maximum": 8
+            },
+            {
+              "minimum": 16,
+              "maximum": 16
+            },
+            {
+              "minimum": 24,
+              "maximum": 24
+            },
+            {
+              "minimum": 32,
+              "maximum": 32
+            }
+          ]
+        },
+        "Compression": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 6
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "SizeImage": {
+          "type": "integer"
+        },
+        "XPelsPerMeter": {
+          "type": "integer"
+        },
+        "YPelsPerMeter": {
+          "type": "integer"
+        },
+        "ColorsUsed": {
+          "type": "integer"
+        },
+        "ColorsImportant": {
+          "type": "integer"
+        }
+      }
+    },
+    "Palette": {
+      "$id": "#BMP.Palette",
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "Pixels": {
+      "$id": "#BMP.Pixels",
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    }
+  },
+  "properties": {
+    "fileHeader": {
+      "$ref": "#BMP.FileHeader"
+    },
+    "infoHeader": {
+      "$ref": "#BMP.InfoHeader"
+    },
+    "palette": {
+      "$ref": "#BMP.Palette"
+    },
+    "pixels": {
+      "$ref": "#BMP.Pixels"
+    }
+  }
+}
